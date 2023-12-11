@@ -57,7 +57,7 @@
           <td>$tampil[nama_po]</td>
           <td>$tampil[tujuan]</td>
           <td>$tampil[biaya_tiket]</td>
-          <td><a href='beli.php?no=$tampil[id]'target=_blank' class='btn btn-primary'>Beli</a></td>
+          <td><a href='beli.php?id=$tampil[id]'target=_blank' class='btn btn-primary'>Beli</a></td>
         </tr>
           ";  
           $no++;

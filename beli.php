@@ -10,7 +10,7 @@ $username = $_SESSION['username'];
   include "koneksi.php";
   date_default_timezone_set("Asia/Bangkok");
   $today = date("Y-m-d");
-  $sql = mysqli_query($koneksi, "select * from bus where no='$_GET[no]'");
+  $sql = mysqli_query($koneksi, "select * from bus where id='$_GET[id]'");
   $tampil = mysqli_fetch_array($sql);
 
     if(isset($_POST['hitung'])){
