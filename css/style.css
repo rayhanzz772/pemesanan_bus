@@ -1,0 +1,17 @@
+body{
+	margin: 0;
+	padding-top: 40px;
+}
+img{
+	width: 200px;
+
+}
+.table-container{
+	margin-left: 100px;
+	margin-right: 100px;
+}
+
+h3 {
+	margin-left: 100px;
+	margin-right: 100px;
+}
