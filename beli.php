@@ -1,5 +1,8 @@
 <?php
 
+include 'config.php';
+$db = new database();
+
 
 session_start(); // Pastikan session sudah dimulai sebelum mengakses variabel session
 
@@ -138,10 +141,13 @@ exit();
                 <td>Jenis Kelamin</td>
                 <td>:</td>
                 <td>
-                  <select name="jenis_kelamin">
-                        <option value="">- Pilih -</option>
-                        <option value="Laki-laki">Laki-laki</option>
-                        <option value="Perempuan">Perempuan</option>
+                <select name="jenis_kelamin">
+                        <option value="--"></option>
+                        <?php
+                        foreach ($db->tampil_data_jenis_kelamin() as $x) {
+                            echo '<option value="' . $x['kode_jk'] . '">' . $x['keterangan_jk'] . '</option>';
+                        }
+                        ?>
                     </select>
                 </td>
           </tr>

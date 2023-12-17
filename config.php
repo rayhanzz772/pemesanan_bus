@@ -81,6 +81,33 @@ function tambah_data_user($username, $password, $akses_id, $email)
 mysqli_query($this->koneksi, "INSERT INTO user VALUES ('', '$username', '$password', '$akses_id', '$email')");
 }
 
+function tampil_data_jenis_kelamin() {
+    $data = mysqli_query($this->koneksi, "SELECT * FROM jenis_kelamin");
+    $hasil = array();
+
+    if ($data) {
+        while ($row = mysqli_fetch_assoc($data)) {
+            $hasil[] = $row;
+        }
+    } else {
+        echo "Query failed: " . mysqli_error($this->koneksi);
+    }
+
+    return $hasil;
+}
+
+function tampil_data_bus() {
+    $data = mysqli_query($this->koneksi, "SELECT *
+                                          FROM nama_bus nb
+                                          INNER JOIN kota k ON nb.id_bus = k.id_bus
+                                          INNER JOIN gambar_bus gb ON nb.id_foto = gb.id_foto 
+                                          INNER JOIN harga_bus h ON nb.id_bus = h.id_bus");
+    while ($row = mysqli_fetch_array($data)) {
+        $hasil[] = $row;
+    }
+    return $hasil;
+}
+
     // function tampil_data_jenis_kelamin() {
     //     $data_jenis_kelamin = mysqli_query($this->koneksi, "SELECT * FROM jenis_kelamin");
     //     while ($row_jenis_kelamin = mysqli_fetch_array($data_jenis_kelamin)) {

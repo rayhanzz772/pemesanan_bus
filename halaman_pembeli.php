@@ -22,9 +22,12 @@ if (!isset($_SESSION['username'])) {
 </head>
 
 <body>
+<?php
+    include 'config.php';
+    $db = new Database();
+    ?>
     <?php include 'menu_pembeli.html'?>
     <h2>Daftar Bus</h2>
-    <?php include 'menu_pembeli.html'?>
             <h2>Daftar Bus</h2>
         
             <div class="table-container">
@@ -35,65 +38,41 @@ if (!isset($_SESSION['username'])) {
                         <th scope="col">Nama Bus</th>
                         <th scope="col">Gambar Bus</th>
                         <th scope="col">Tujuan Bus</th>
+                        <th scope="col">Harga</th>
                         <th scope="col">Action</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <th style="text-align: center;" scope="row">1</th>
-                        <td>Sinar Jaya</td>
-                        <td><img src="img/sinar_jaya.jpg" class="img-fluid" style="max-width: 100px;" alt="Sinar Jaya"></td>
-                        <td>Malang, Semarang, Cirebon</td>
-                        <td>                        
-                        <div class="col-md-6">
-                            <button type="button" class="btn btn-primary"><a style="color: white; text-decoration: none;" href="tabel_bus.php">Pesan</a></button> <!-- Klik untuk memesan -->
-                        </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <th style="text-align: center;" scope="row">2</th>
-                        <td>Dewi Sri</td>
-                        <td><img src="img/dewi_sri.jpeg" class="img-fluid" style="max-width: 100px;" alt="Dewi Sri"></td>
-                        <td>Bandung, Yogyakarta</td>
-                        <td>                        
-                        <div class="col-md-6">
-                            <button type="button" class="btn btn-primary"><a style="color: white; text-decoration: none;" href="tabel_bus.php">Pesan</a></button> <!-- Klik untuk memesan -->
-                        </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <th style="text-align: center;" scope="row">3</th>
-                        <td>Putra Remaja</td>
-                        <td><img src="img/putra_remaja.png" class="img-fluid" style="max-width: 100px;" alt="Putra Remaja"></td>
-                        <td>Sumedang, Cilacap</td>
-                        <td>                        
-                        <div class="col-md-6">
-                            <button type="button" class="btn btn-primary"><a style="color: white; text-decoration: none;" href="tabel_bus.php">Pesan</a></button> <!-- Klik untuk memesan -->
-                        </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <th style="text-align: center;" scope="row">4</th>
-                        <td>Nusantara</td>
-                        <td><img src="img/nusantara.jpg" class="img-fluid" style="max-width: 100px;" alt="Nusantara"></td>
-                        <td>Banyuwangi, Surabaya</td>
-                        <td>                        
-                        <div class="col-md-6">
-                            <button type="button" class="btn btn-primary"><a style="color: white; text-decoration: none;" href="tabel_bus.php">Pesan</a></button> <!-- Klik untuk memesan -->
-                        </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <th style="text-align: center;" scope="row">5</th>
-                        <td>Haryanto</td>
-                        <td><img src="img/nusantara.jpg" class="img-fluid" style="max-width: 100px;" alt="Nusantara"></td>
-                        <td>Surabaya</td>
-                        <td>                        
-                        <div class="col-md-6">
-                            <button type="button" class="btn btn-primary"><a style="color: white; text-decoration: none;" href="tabel_bus.php">Pesan</a></button> <!-- Klik untuk memesan -->
-                        </div>
-                        </td>
-                    </tr>
+
+                <?php
+$no = 1;
+foreach ($db->tampil_data_bus() as $x) {
+    ?>
+    <tr>
+        <td><?php echo $no++; ?></td>
+        <td><?php echo $x['bus']; ?></td>
+        <td> <?php
+                            if (empty($x['alamat'])) {
+                        ?>
+                        <font color="red">Belum ada alamat</font>
+                        <?php
+                            } else {
+                        ?>
+                            <img src="<?php echo $x['alamat']; ?>" alt="" width="50" height="80">
+                        <?php    
+                            }
+                        ?></td>
+        <td><?php echo $x['nama_kota']; ?></td>
+        <td><?php echo $x['harga_bus']; ?></td>
+        <td><a href="tabel_bus.php"><button type="button" class='btn btn-primary' id="btn-1">Beli</button></a></td>
+
+    </tr>
+<?php 
+} 
+?>
+
+
+                    
                     <tr>
                     <div class="row">
                     </div>
