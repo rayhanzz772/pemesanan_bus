@@ -1,6 +1,7 @@
 <?php
 
 include '../koneksi.php';
+include 'config_admin.php';
 
 // Query untuk mencari data dari tabel user yang memiliki nama_po 'Sinar Jaya'
 $query = "SELECT id, nama_po, tujuan, biaya_tiket FROM bus WHERE nama_po = 'Sinar Jaya'";

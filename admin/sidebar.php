@@ -36,11 +36,7 @@
                 <div id="collapseBus" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Bus :</h6>
-                        <a class="collapse-item" href="sinar_jaya.php">Sinar Jaya</a>
-                        <a class="collapse-item" href="haryanto.php">Haryanto</a>
-                        <a class="collapse-item" href="dewi_sri.php">Dewi Sri</a>
-                        <a class="collapse-item" href="nusantara.php">Nusantara</a>
-                        <a class="collapse-item" href="putra_remaja.php">Putra Remaja</a>
+
                         <a class="collapse-item" href="semua_bus.php">Semua Bus</a>
                     </div>
                 </div>

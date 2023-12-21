@@ -41,21 +41,88 @@ class Database {
 
 
     function tambah_user($user, $email, $password)
-{
-    // Gunakan prepared statement untuk menghindari serangan SQL injection
-    $stmt = $this->koneksi->prepare("INSERT INTO user (user, email, akses_id, password) VALUES (?, ?, ?, ?)");
-    // Bind parameter ke query
-    $akses_id = 2; // Sesuaikan nilai akses_id sesuai kebutuhan
-    $stmt->bind_param("ssis", $user, $email, $akses_id, $password);
+    {
+        // Hindari langsung memasukkan variabel ke dalam string query untuk mencegah SQL injection.
+        // Pastikan Anda membersihkan atau memvalidasi data sebelum menggunakannya dalam query.
+        
+        // Lakukan sanitasi data, misalnya dengan fungsi mysqli_real_escape_string atau menggunakan PDO dengan prepared statement.
+        $user = $this->koneksi->real_escape_string($user);
+        $email = $this->koneksi->real_escape_string($email);
+        $password = $this->koneksi->real_escape_string($password);
+        
+        $image_url = '';
+        $akses_id = 2; // Sesuaikan nilai akses_id sesuai kebutuhan
+    
+        // Buat string query dengan data yang sudah divalidasi atau disanitasi
+        $query = "INSERT INTO user (username, password, akses_id, email, image_url) VALUES ('$user', '$password', '$akses_id', '$email', '$image_url')";
+        
+        // Eksekusi query
+        if ($this->koneksi->query($query)) {
+            return true; // Jika berhasil
+        } else {
+            return false; // Jika terjadi kesalahan
+        }
+    }
+    
 
-    // Eksekusi query
-    $stmt->execute();
-    $stmt->close();
+
+function tampil_data_bus() {
+    $data = mysqli_query($this->koneksi, "SELECT *
+                                          FROM nama_bus nb
+                                          INNER JOIN id_bus ib ON nb.id_foto = ib.id_foto
+                                          INNER JOIN kota k ON nb.id_bus = k.id_bus
+                                          INNER JOIN id_kota ik ON nb.id_kota = ik.id_kota
+                                          INNER JOIN gambar_bus gb ON nb.id_foto = gb.id_foto 
+                                          INNER JOIN harga_bus h ON nb.id_bus = h.id_bus");
+
+    // Periksa apakah query berhasil atau tidak
+    if (!$data) {
+        // Jika terdapat error, tampilkan pesan error
+        die("Error: " . mysqli_error($this->koneksi));
+    }
+
+    $hasil = [];
+    while ($row = mysqli_fetch_array($data)) {
+        $hasil[] = $row;
+    }
+    return $hasil;
 }
 
-function edit_data_bus($id,$nama_po, $tujuan, $biaya_tiket){
-    mysqli_query($this->koneksi, "UPDATE bus SET nama_po = '$nama_po', tujuan = '$tujuan', biaya_tiket = '$biaya_tiket' WHERE id = '$id'");
+
+function nama_data_kota() {
+    $data = mysqli_query($this->koneksi, "SELECT * FROM kota k
+                                            INNER JOIN id_kota ik ON k.id_kota = ik.id_kota   
+    ");
+    $hasil = array();
+
+    if ($data) {
+        while ($row = mysqli_fetch_assoc($data)) {
+            $hasil[] = $row;
+        }
+    } else {
+        echo "Query failed: " . mysqli_error($this->koneksi);
+    }
+
+    return $hasil;
 }
+
+
+
+function nama_data_bus() {
+    $data = mysqli_query($this->koneksi, "SELECT * FROM id_bus");
+    $hasil = array();
+
+    if ($data) {
+        while ($row = mysqli_fetch_assoc($data)) {
+            $hasil[] = $row;
+        }
+    } else {
+        echo "Query failed: " . mysqli_error($this->koneksi);
+    }
+
+    return $hasil;
+}
+  
 
 function edit_data_user($id, $username, $password, $email){
     mysqli_query($this->koneksi, "UPDATE user SET username = '$username', password = '$password', email = '$email' WHERE id = '$id'");
@@ -63,7 +130,7 @@ function edit_data_user($id, $username, $password, $email){
 
 function hapus_data_bus($id)
 {
-mysqli_query($this->koneksi, "DELETE FROM bus WHERE id = '$id'");
+mysqli_query($this->koneksi, "DELETE FROM nama_bus WHERE id = '$id'");
 }
 
 function hapus_data_user($id)
@@ -96,17 +163,8 @@ function tampil_data_jenis_kelamin() {
     return $hasil;
 }
 
-function tampil_data_bus() {
-    $data = mysqli_query($this->koneksi, "SELECT *
-                                          FROM nama_bus nb
-                                          INNER JOIN kota k ON nb.id_bus = k.id_bus
-                                          INNER JOIN gambar_bus gb ON nb.id_foto = gb.id_foto 
-                                          INNER JOIN harga_bus h ON nb.id_bus = h.id_bus");
-    while ($row = mysqli_fetch_array($data)) {
-        $hasil[] = $row;
-    }
-    return $hasil;
-}
+
+
 
     // function tampil_data_jenis_kelamin() {
     //     $data_jenis_kelamin = mysqli_query($this->koneksi, "SELECT * FROM jenis_kelamin");

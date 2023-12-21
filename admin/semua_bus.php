@@ -1,28 +1,3 @@
-<?php
-
-include '../koneksi.php';
-
-// Query untuk mencari data dari tabel user yang memiliki nama_po 'Haryanto'
-$query = "SELECT id, nama_po, tujuan, biaya_tiket FROM bus";
-$result = mysqli_query($koneksi, $query);
-
-// Periksa apakah query berhasil dieksekusi dan mengembalikan hasil
-if ($result) {
-    // Periksa apakah ada hasil yang ditemukan
-    if (mysqli_num_rows($result) > 0) {
-        // Ambil data hasil query
-        $row = mysqli_fetch_assoc($result);
-        // Tampilkan nama PO yang ditemukan
-    } else {
-        // Jika tidak ada hasil yang ditemukan
-        echo "Data tidak ditemukan.";
-    }
-} else {
-    // Jika terjadi kesalahan dalam query
-    echo "Gagal menjalankan query.";
-}
-
-?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -85,51 +60,82 @@ if ($result) {
                                     <!-- set table header  -->
                                     <tr>
                                         <th scope="col">#</th>
-                                        <th scope="col">Nama PO</th>
+                                        <th scope="col">Nama Bus</th>
+                                        <th scope="col">ID Bus</th>
                                         <th scope="col">Tujuan</th>
                                         <th scope="col">Harga Tiket</th>
                                         <th scope="col">Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <?php
-                                        // membuat koneksi ke database 
-                                        $koneksi = mysqli_connect("localhost", "root", "", "dt_bus");
-            
-                                        //membuat variabel angka
-                                        $no = 1;
-            
-                                        //mengambil data dari tabel barang
-                                        $select         = mysqli_query($koneksi, "select * from bus");
-            
-                                        //melooping(perulangan) dengan menggunakan while
-                                        while($data= mysqli_fetch_array($select)){
-                                    ?>
+                                <?php
+                                    include '../config.php';
+                                    $db = new Database();
+
+                                    
+                                    
+                    $no = 1;
+                    foreach ($db->tampil_data_bus() as $x) {
+                        
+                        ?>
+                        
                                     <tr>
-            
                                         <!-- menampilkan data dengan menggunakan array  -->
                                         <td><?php echo $no++; ?></td>
-                                        <td><?php echo $data['nama_po']; ?></td>
-                                        <td><?php echo $data['tujuan']; ?></td>
-                                        <td><?php echo $data['biaya_tiket']; ?></td>
-                                        <td>
-            
+                                        <td><?php echo $x['nama_bus']; ?></td>
+                                        <td><?php echo $x['id_bus']; ?></td>
+                                        <td><?php echo $x['kota']; ?></td>
+                                        <td><?php echo $x['harga_bus']; ?></td>
+                                        <td>        
                                             <!-- membuat tombol dengan ukuran small berwarna biru  -->
                                             <!-- data-target setiap modal harus berbeda, karena akan menampilkan data yang berbeda pula
                                             caranya membedakannya, gunakan id sebagai pembeda data-target di setiap modal -->
                                             <a href="" class="btn btn-sm btn-info" data-toggle="modal"
-                                                data-target="#modal<?php echo $data['id']; ?>">Edit</a> | 
+                                                data-target="#modal<?php echo $x['id']; ?>">Edit</a> | 
                                             
-                                            <a class="btn btn-sm btn-info" href="#" onclick="confirmDelete(<?php echo $data['id']; ?>)">Delete</a>
+                                                <a class="btn btn-sm btn-danger" href='hapus_data_bus.php?id=<?php echo $x["id_bus"]; ?>'
+                                                 onclick="return confirm('Are you sure you want to delete this item?');">Delete</a>
+                                                
+
+
+
+                                            <!-- Modal Konfirmasi -->
+                                            <div class="modal fade" id="modal_delete_<?php echo $x['id_bus']; ?>" tabindex="-1" role="dialog" aria-labelledby="modalDeleteLabel" aria-hidden="true">
+                                                <div class="modal-dialog" role="document">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h5 class="modal-title" id="modalDeleteLabel">Konfirmasi Penghapusan</h5>
+                                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                <span aria-hidden="true">&times;</span>
+                                                            </button>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            <p>Apakah Anda yakin ingin menghapus data ini?</p>
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
+                                                            <button type="button" class="btn btn-danger" id="hapusData">Hapus</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+
+                                            
+                                                
+
+
+
+
                                                         
                                             <!-- untuk melihat bentuk-bentuk modal kalian bisa mengunjungi laman bootstrap dan cari modal di kotak pencariannya -->
                                             <!-- id setiap modal juga harus berbeda, cara membedakannya dengan menggunakan id -->
-                                            <div class="modal fade" id="modal<?php echo $data['id']; ?>" tabindex="-1"
+                                            <div class="modal fade" id="modal<?php echo $x['id']; ?>" tabindex="-1"
                                                 aria-labelledby="exampleModalLabel" aria-hidden="true">
                                                 <div class="modal-dialog">
                                                     <div class="modal-content">
                                                         <div class="modal-header">
-                                                            <h5 class="modal-title" id="exampleModalLabel">Edit Barang</h5>
+                                                            <h5 class="modal-title" id="exampleModalLabel">Edit bis</h5>
                                                             <button type="button" class="close" data-dismiss="modal"
                                                                 aria-label="Close">
                                                                 <span aria-hidden="true">&times;</span>
@@ -139,23 +145,39 @@ if ($result) {
                                                         data-data tersebut ditampilkan sama seperti menampilkan data pada tabel. -->
                                                         <div class="modal-body">
                                                             <form action="simpan_edit_data_bus.php" method="POST" enctype="multipart/form-data">
-                                                            <input type="hidden" name="id" value="<?php echo $data['id']; ?>"/>
+                                                            <input type="hidden" name="id" value="<?php echo $x['id']; ?>"/>
                                                                 <div class="form-group">
-                                                                    <label for="exampleFormControlInput1">Nama PO</label>
-                                                                    <input type="text" name="nama_po" class="form-control"
-                                                                        value="<?php echo $data['nama_po']; ?>">
+                                                                    <label for="exampleFormControlInput1">Nama Bus</label>
+                                                                    <input type="text" name="bus" class="form-control"
+                                                                        value="<?php echo $x['nama_bus']; ?>">
+                                                                </div>
+
+                                                                <div class="form-group">
+                                                                    <label for="exampleFormControlInput1"> Bus</label>
+                                                                    <input type="text" name="id_bus" class="form-control"
+                                                                        value="<?php echo $x['id_bus']; ?>">
                                                                 </div>
 
                                                                 <div class="form-group">
                                                                     <label for="exampleFormControlInput1">Tujuan</label>
-                                                                    <input type="text" name="tujuan" class="form-control"
-                                                                        value="<?php echo $data['tujuan']; ?>">
+                                                                    
+                                                                    <select name="kota">
+
+                                                                        <option value="--"></option>
+                                                                        <?php
+                                                                        foreach ($db->nama_data_kota() as $x) {
+                                                                            echo '<option value="' . $x['id_kota'] . '">' . $x['kota'] . '</option>';
+                                                                        }
+                                                                        ?>
+                                                                    </select>
+
+                                                                    
                                                                 </div>
 
                                                                 <div class="form-group">
                                                                     <label for="exampleFormControlInput1">Biaya Tiket</label>
-                                                                    <input type="text" class="form-control" name="biaya_tiket"
-                                                                        value="<?php echo $data['biaya_tiket']; ?>">
+                                                                    <input type="text" class="form-control" name="harga_bus"
+                                                                        value="">
                                                                 </div>
                                                                 <div class="modal-footer">
                                                             <button type="submit" class="btn btn-primary">Save changes</button>
@@ -245,20 +267,19 @@ if ($result) {
     <script src="js/demo/datatables-demo.js"></script>
 
     <script>
-function confirmDelete(id) {
-    // Tampilkan kotak dialog konfirmasi
-    var confirmation = confirm("Apakah Anda yakin ingin menghapus data ini?");
+    $(document).ready(function() {
+        // Pastikan tombol "Hapus" dengan kelas confirm-delete memiliki event listener
+        $('.confirm-delete').on('click', function() {
+            // Tampilkan modal konfirmasi
+            $('#konfirmasiHapus').modal('show');
+        });
 
-    // Jika pengguna menekan tombol 'OK' dalam kotak dialog
-    if (confirmation) {
-        // Redirect ke skrip penghapusan dengan ID sebagai parameter
-        window.location.href = "hapus_data_bus.php?id=" + id;
-    } else {
-        // Jika pengguna membatalkan aksi
-        // Kosongkan atau biarkan halaman tetap seperti sebelumnya
-        // (tidak ada tindakan penghapusan)
-    }
-}
+        // Pastikan tombol "Hapus" di dalam modal konfirmasi memiliki event listener
+        $('#hapusData').on('click', function() {
+            // Lakukan tindakan penghapusan di sini
+            console.log('Tombol "Hapus" di dalam modal konfirmasi diklik.'); // Cek apakah ini ditampilkan di konsol browser
+        });
+    });
 </script>
 
 <script>

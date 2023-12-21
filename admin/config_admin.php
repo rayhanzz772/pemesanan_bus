@@ -25,6 +25,18 @@ class Database {
             return null;
         }
     }
+
+    function tampil_data_bus() {
+        $data = mysqli_query($this->koneksi, "SELECT *
+                                              FROM nama_bus nb
+                                              INNER JOIN kota k ON nb.id_bus = k.id_bus
+                                              INNER JOIN gambar_bus gb ON nb.id_foto = gb.id_foto 
+                                              INNER JOIN harga_bus h ON nb.id_bus = h.id_bus");
+        while ($row = mysqli_fetch_array($data)) {
+            $hasil[] = $row;
+        }
+        return $hasil;
+    }
 }
 
 
