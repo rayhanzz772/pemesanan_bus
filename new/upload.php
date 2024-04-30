@@ -19,10 +19,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["submit"])) {
     }
 
     // Periksa apakah file sudah ada
+    // Periksa apakah file sudah ada
     if (file_exists($targetFile)) {
-        echo "Maaf, file sudah ada.";
-        $uploadOk = 0;
+        $timestamp = time(); // Waktu saat ini sebagai string
+        $filename = pathinfo($_FILES["fileToUpload"]["name"], PATHINFO_FILENAME);
+        $imageFileType = strtolower(pathinfo($_FILES["fileToUpload"]["name"], PATHINFO_EXTENSION));
+        $targetFile = $targetDir . $filename . '_' . $timestamp . '.' . $imageFileType;
     }
+
 
     // Batasi jenis file yang diizinkan
     if ($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
@@ -37,14 +41,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["submit"])) {
     } else {
         if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $targetFile)) {
             // Lakukan penyimpanan nama file ke database berdasarkan username
-            $imageURL = $targetDir . basename($_FILES["fileToUpload"]["name"]);
-    
+            $imageURL = $targetFile; // Gunakan $targetFile sebagai URL gambar yang sudah diperbarui
+        
             // Simpan data gambar ke dalam tabel user berdasarkan username
             $koneksi = new mysqli("localhost", "root", "", "dt_bus");
             $sql = "UPDATE user SET image_url='$imageURL' WHERE username='$username'";
             $koneksi->query($sql);
             $koneksi->close();
-    
+        
             // Redirect ke halaman profil.php setelah berhasil menyimpan foto
             header("Location: profil.php");
             exit; // Pastikan kode setelah header("Location: ...") tidak dijalankan dengan memanggil exit atau die.
@@ -52,5 +56,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["submit"])) {
             echo "Maaf, terjadi kesalahan saat mengunggah file.";
         }
     }
+    
 }
 ?>

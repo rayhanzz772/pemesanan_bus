@@ -1,0 +1,34 @@
+.bottom-bar {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: #333;
+    display: flex;
+}
+
+.bottom-bar-item {
+    flex: 1;
+    padding: 10px;
+    text-align: center;
+    color: #fff;
+    text-decoration: none;
+}
+
+
+/* Ubah warna latar belakang saat item aktif */
+
+.bottom-bar-item.active {
+    background-color: #555;
+}
+
+.icon-text {
+    text-align: center;
+    /* Untuk membuat teks berada di tengah */
+    display: block;
+    /* Untuk memastikan teks berada di bawah ikon */
+    margin-top: 5px;
+    /* Untuk memberikan sedikit jarak antara ikon dan teks */
+    font-size: 12px;
+    /* Sesuaikan ukuran font sesuai kebutuhan */
+}
