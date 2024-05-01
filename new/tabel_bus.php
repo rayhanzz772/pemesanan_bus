@@ -1,77 +1,26 @@
-
-
-
 <!DOCTYPE html>
-
-
-<!-- =========================================================
-* Sneat - Bootstrap 5 HTML Admin Template - Pro | v1.0.0
-==============================================================
-
-* Product Page: https://themeselection.com/products/sneat-bootstrap-html-admin-template/
-* Created by: ThemeSelection
-* License: You must have a valid license purchased in order to legally use the theme for your project.
-* Copyright ThemeSelection (https://themeselection.com)
-
-=========================================================
- -->
-<!-- beautify ignore:start -->
-<html lang="en" class="light-style layout-menu-fixed" dir="ltr" data-theme="theme-default" data-assets-path="../assets/" data-template="vertical-menu-template-free">
-<script>
-    $(document).ready(function() {
-        $('#myTable').DataTable();
-    });
-</script>
-<head>
-<?php
+<html lang="en">
+  <head>
+  <?php
     include 'config.php';
     $db = new Database();
     ?>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.js" integrity="sha512-8Z5++K1rB3U+USaLKG6oO8uWWBhdYsM3hmdirnOEWp8h2B1aOikj5zBzlXs8QOrvY9OxEnD2QDkbSKKpfqcIWw==" crossorigin="anonymous"></script>
 
-    <title>Tables - Basic Tables | Sneat - Bootstrap 5 HTML Admin Template - Pro</title>
+    <!-- Boxicons -->
+    <link href="https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css" rel="stylesheet" />
+    <!-- My CSS -->
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" />
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
-    <meta name="description" content="" />
-
-    <!-- Favicon -->
-    <link rel="icon" type="image/x-icon" href="../assets/img/favicon/favicon.ico" />
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-
-    <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet" />
-
-    <!-- Icons. Uncomment required icon fonts -->
-    <link rel="stylesheet" href="../assets/vendor/fonts/boxicons.css" />
-    <link rel="stylesheet" href="style.css">
-
-    <!-- Core CSS -->
-    <link rel="stylesheet" href="../assets/vendor/css/core.css" class="template-customizer-core-css" />
-    <link rel="stylesheet" href="../assets/vendor/css/theme-default.css" class="template-customizer-theme-css" />
-    <link rel="stylesheet" href="../assets/css/demo.css" />
-
-    <!-- Vendors CSS -->
-    <link rel="stylesheet" href="../assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.css" />
-
-    <!-- Page CSS -->
-
-    <!-- Helpers -->
-    <script src="../assets/vendor/js/helpers.js"></script>
-
-    <!--! Template customizer & Theme config files MUST be included after core stylesheets and helpers.js in the <head> section -->
-    <!--? Config:  Mandatory theme config file contain global vars & default theme options, Set your preferred theme option in this file.  -->
-    <script src="../assets/js/config.js"></script>
-    <style>
-      
-    </style>
-</head>
-
-<body>
-  <!-- Bottom Navbar -->
+    <title>Administrator</title>
+  </head>
+  <body>
+    <!-- Bottom Navbar -->
   <nav class="p-0 navbar navbar-light bg-light border-top navbar-expand d-md-none d-lg-none d-xl-none fixed-bottom">
     <ul class="navbar-nav nav-justified w-100">
       <li class="nav-item">
@@ -114,67 +63,95 @@
       </li>
     </ul>
   </nav>
-    <!-- Layout wrapper -->
-    <div class="layout-wrapper layout-content-navbar">
-        <div class="layout-container">
-            <!-- Menu -->
-<?php include 'header.html'; ?>
-            <!-- / Menu -->
+  <!-- <nav>
+        <i class="bx bx-menu"></i>
+        <a href="#" class="nav-link">Categories</a>
+        <form action="#">
+          <div class="form-input">
+            <input type="search" placeholder="Search..." />
+            <button type="submit" class="search-btn"><i class="bx bx-search"></i></button>
+          </div>
+        </form>
+        <input type="checkbox" id="switch-mode" hidden />
+        <label for="switch-mode" class="switch-mode"></label>
+        <a href="#" class="notification">
+          <i class="bx bxs-bell"></i>
+          <span class="num">8</span>
+        </a>
+        <a href="#" class="profile">
+          <img src="img/people.png" />
+        </a>
+      </nav> -->
+  <?php foreach ($db->tampil_data_bus() as $x): ?>
+    <!-- CONTENT -->
+    <section id="content">
+      <!-- NAVBAR -->
+      
+      <!-- NAVBAR -->
 
+      <!-- MAIN -->
+      <a href="">
+        <main>
+          <div class="table-data">
+            <div class="order">
+              <div class="head">
+                <div class="head_left">
+                  <h4>Arnes</h4>
+                  <div class="quality_name">
+                    <p>Premium</p>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24">
+                      <path
+                        d="M21.947 9.179a1.001 1.001 0 0 0-.868-.676l-5.701-.453-2.467-5.461a.998.998 0 0 0-1.822-.001L8.622 8.05l-5.701.453a1 1 0 0 0-.619 1.713l4.213 4.107-1.49 6.452a1 1 0 0 0 1.53 1.057L12 18.202l5.445 3.63a1.001 1.001 0 0 0 1.517-1.106l-1.829-6.4 4.536-4.082c.297-.268.406-.686.278-1.065z"
+                        fill="#1BA0E1"
+                      />
+                    </svg>
+                    <p>4,7/5</p>
+                  </div>
+                </div>
+                <div class="head_right">
+                  <h4>Rp. 50.000 <span>/kursi</span></h4>
+                  <div class="quality_name2">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                      <path
+                        d="M12 5C7.031 5 2 6.546 2 9.5S7.031 14 12 14c4.97 0 10-1.546 10-4.5S16.97 5 12 5zm-5 9.938v3c1.237.299 2.605.482 4 .541v-3a21.166 21.166 0 0 1-4-.541zm6 .54v3a20.994 20.994 0 0 0 4-.541v-3a20.994 20.994 0 0 1-4 .541zm6-1.181v3c1.801-.755 3-1.857 3-3.297v-3c0 1.44-1.199 2.542-3 3.297zm-14 3v-3C3.2 13.542 2 12.439 2 11v3c0 1.439 1.2 2.542 3 3.297z"
+                        fill="#D8CE3B"
+                      />
+                    </svg>
+                    <p>Dapatkan 250 Poin</p>
+                  </div>
+                </div>
+              </div>
+              <div class="main">
+                <div class="col_1">
+                  <h6>19:00</h6>
+                  <p>2 jam 30 mnt</p>
+                  <h6>21:30</h6>
+                </div>
+                <div class="col_2">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 256 256">
+                    <path fill="#1ba0e1" d="M128 26a102 102 0 1 0 102 102A102.12 102.12 0 0 0 128 26m0 192a90 90 0 1 1 90-90a90.1 90.1 0 0 1-90 90" />
+                  </svg>
+                  <img src="img/line.png" alt="" />
+                  <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 256 256">
+                    <path fill="#1ba0e1" d="M128 26a102 102 0 1 0 102 102A102.12 102.12 0 0 0 128 26m0 192a90 90 0 1 1 90-90a90.1 90.1 0 0 1-90 90" />
+                  </svg>
+                </div>
+                <div class="col_3">
+                  <p>Arnes Shuttle Bandung</p>
+                  <p>Arnes Shuttle Bekasi</p>
+                </div>
+                <div class="col_4"></div>
+              </div>
+            </div>
+          </div>
+        </main>
+      </a>
+      <!-- MAIN -->
+    </section>
+    
+    <!-- CONTENT -->
 
-            
-
-              <!-- Layout container -->
-                <div class="layout-page">
-                 <!-- Navbar -->
-
-                 <nav class="layout-navbar container-xxl navbar navbar-expand-xl navbar-detached align-items-center bg-navbar-theme" id="layout-navbar">
-
-
-                    <div class="navbar-nav-right d-flex align-items-center" id="navbar-collapse">
-                        <!-- Search -->
-                        <div class="navbar-nav align-items-center">
-                            <div class="nav-item d-flex align-items-center">
-                                <i class="bx bx-search fs-4 lh-0"></i>
-                                <input type="text" class="form-control border-0 shadow-none" placeholder="Search..." aria-label="Search..." />
-                            </div>
-                        </div>
-                        <!-- /Search -->
-
-                    </div>
-                   </nav>
-
-                  <!-- / Navbar -->
-
-                  <!-- Content wrapper -->
-                  <div class="content-wrapper border">
-                    <!-- Content -->
-
-                    <div class="container-xxl flex-grow-1 container-p-y">
-                        <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Bus /</span> Basic Bus</h4>
-
-                        <!-- Basic Bootstrap Table -->
-
-
-
-<!-- table disini -->
-
-<?php foreach ($db->tampil_data_bus() as $x): ?>
-<div class="card">
-  <div class="card-body">
-    <div class="text-section">
-    <h5><?php echo $x['nama_bus']; ?> (<?php echo $x['id_bus']; ?>)</h5>
-    <p class="card-text">Tujuan Bus: <?php echo $x['kota']; ?></p>
-    </div>
-    <div class="cta-section">
-      <div>
-        <p class="card-text"><?php echo $x['harga_bus']; ?></p>
-      </div>
-      <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#insertDataModal<?php echo $x['id_bus']; ?>">Beli</a>
-    </div>
-  </div>
-</div>  
-
+    <script src="script.js"></script>
     <!-- Modal -->
     <?php  
 include "koneksi.php";
@@ -290,38 +267,5 @@ $tampil = mysqli_fetch_array($sql);
       <!-- Overlay -->
       <div class="layout-overlay layout-menu-toggle"></div>
     </div>
-    <!-- / Layout wrapper -->
-    <!-- jQuery -->
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-
-<!-- Bootstrap JS -->
-
-
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-
-    <!-- Core JS -->
-    <!-- build:js assets/vendor/js/core.js -->
-    <script src="../assets/vendor/libs/jquery/jquery.js"></script>
-    <script src="../assets/vendor/libs/popper/popper.js"></script>
-    <script src="../assets/vendor/js/bootstrap.js"></script>
-    <script src="../assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.js"></script>
-
-    <script src="../assets/vendor/js/menu.js"></script>
-    <!-- endbuild -->
-
-    <!-- Vendors JS -->
-
-    <!-- Main JS -->
-    <script src="../assets/js/main.js"></script>
-    <script>
-  document.addEventListener("DOMContentLoaded", function() {
-    // Fungsi untuk menampilkan modal saat halaman dimuat
-    $('#myModal').modal('show');
-  });
-</script>
-    <!-- Page JS -->
-
-    <!-- Place this tag in your head or just before your close body tag. -->
-    <script async defer src="https://buttons.github.io/buttons.js"></script>
   </body>
 </html>
