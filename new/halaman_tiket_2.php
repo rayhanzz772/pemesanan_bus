@@ -38,32 +38,34 @@ $result = mysqli_query($koneksi, "SELECT * FROM penumpang WHERE username = '$use
 
     <!-- Icons. Uncomment required icon fonts -->
     <link rel="stylesheet" href="../assets/vendor/fonts/boxicons.css" />
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-examplehash" crossorigin="anonymous" />
     <!-- Core CSS -->
     <link rel="stylesheet" href="../assets/vendor/css/core.css" class="template-customizer-core-css" />
     <link rel="stylesheet" href="../assets/vendor/css/theme-default.css" class="template-customizer-theme-css" />
     <link rel="stylesheet" href="../assets/css/demo.css" />
     <link rel="stylesheet" href="style.css">
     <!-- Vendors CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="../assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.css" />
 
     <!-- Page CSS -->
     <style>
       .modal-dialog {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
-  }
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+      }
 
-  .modal-content {
-    text-align: center;
-  }
+      .modal-content {
+        text-align: center;
+      }
 
-  #closeButton {
-  width: 250px;
-  background-color: #6164EC;
-}
+      #closeButton {
+        width: 250px;
+        background-color: #6164EC;
+    }
     </style>
     <!-- Helpers -->
     <script src="../assets/vendor/js/helpers.js"></script>
@@ -110,62 +112,41 @@ $result = mysqli_query($koneksi, "SELECT * FROM penumpang WHERE username = '$use
 
                         <!-- Tiket Bootstrap Table -->
                         <div class="card">
-                            <h5 class="card-header">Tiket</h5>
-                            <div class="table-responsive text-nowrap">
-                                <table class="table">
-                                    <thead>
-                                    <tr class="table">
-      <th scope="col" style="text-align: center;">#</th>
-      <th scope="col">Nama</th>
-      <th scope="col">NIK</th>
-      <th scope="col">No Hp</th>
-      <th scope="col">Nama Bis</th>
-      <th scope="col">Tujuan</th>
-      <th scope="col">Tanggal</th>
-      <th scope="col">Jml tikt dws</th>
-      <th scope="col">Jml tiket anak</th>
-      <th scope="col">total</th>
-      <th scope="col">action 2</th>
-      <th scope="col">Action</th>
+  <div class="card-body">
+    <div class="text-section">
+    <h5>Selesaikan Pembayaran</h5>
+    <p><strong>17.18 PM</strong></p>
+    <p>Selesaikan dalam 58m 46s</p>
+    <p>
+      <hr>
+    </p>
+    <div class="row">
+      
+    </div>
+    <p class="card-text" style="font-style: fw-bold">
+      <strong>OKEBUS 113432553</strong>
+    </p>
+    <p class="card-text">
+      Rp. 79000
+    </p>
+    </div>
 
-    </tr>
-                                    </thead>
-                                      <tbody>
-    <?php  
+  </div>
+</div>  
 
-if (mysqli_num_rows($result) == 0) {
-    echo "<p>Tiket kosong</p>";
-}else{
+                            
 
-          // konek ke database
-          include "koneksi.php";
-          $id = 1;          
-          while ($tampil = mysqli_fetch_array($result)) {
-          echo "
-          
-        <tr>
-          <td>$id</td>
-          <td>$tampil[nama]</td>
-          <td>$tampil[nomor_identitas]</td>
-          <td>$tampil[no_hp]</td>
-          <td>$tampil[nama_po]</td>
-          <td>$tampil[tujuan]</td>
-          <td>$tampil[tgl]</td>
-          <td>$tampil[penumpang_dewasa]</td>
-          <td>$tampil[penumpang_anak]</td>
-          <td>$tampil[total]</td>
-          <td><a href='direct_pdf.php?id=$tampil[id]'target=_blank' class='btn btn-primary'>Cetak</a></td>
-          <td><button type='button' class='btn btn-primary' data-toggle='modal' data-target='#myModal' id='myButton'>
-          Tampilkan Modal
-        </button></td>
-        </tr>
-          ";  
-          $id++;
-            } 
-        }
-          ?>
 
-  </tbody>
+
+
+
+
+
+
+
+
+
+
 
   
 

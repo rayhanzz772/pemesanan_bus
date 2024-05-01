@@ -32,7 +32,7 @@ $mpdf = new \Mpdf\Mpdf([
 
 $mpdf->WriteHTML("
 
-    <h1>Tiket Bus $nama_po</h1>
+    <h1>Tiket Bus $nama_po</h1> <img src='images/image.png' alt=''>
     <table border='1' cellpadding='4' cellspacing='0'>
                 <tr>
                     <td>Nama Lengkap</td>

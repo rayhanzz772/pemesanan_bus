@@ -33,3 +33,14 @@
     background-color: #898989;
     border-color: #898989;
 }
+
+.modal-dialog2 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.modal-content2 {
+    text-align: center;
+}
