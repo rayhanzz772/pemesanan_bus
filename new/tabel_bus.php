@@ -90,13 +90,13 @@
       <!-- NAVBAR -->
 
       <!-- MAIN -->
-      <a href="">
+      <a href="" style="text-decoration: none;">
         <main>
           <div class="table-data">
             <div class="order">
               <div class="head">
                 <div class="head_left">
-                  <h4>Arnes</h4>
+                  <h4><?php echo $x['nama_bus']; ?></h4>
                   <div class="quality_name">
                     <p>Premium</p>
                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24">
@@ -109,7 +109,7 @@
                   </div>
                 </div>
                 <div class="head_right">
-                  <h4>Rp. 50.000 <span>/kursi</span></h4>
+                  <h4><?php echo $x['harga_bus']; ?> <span>/kursi</span></h4>
                   <div class="quality_name2">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
                       <path
@@ -123,9 +123,9 @@
               </div>
               <div class="main">
                 <div class="col_1">
-                  <h6>19:00</h6>
+                  <h6><?php echo $x['waktu_keberangkatan']; ?></h6>
                   <p>2 jam 30 mnt</p>
-                  <h6>21:30</h6>
+                  <h6><?php echo $x['waktu_tiba']; ?></h6>
                 </div>
                 <div class="col_2">
                   <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 256 256">
@@ -137,8 +137,8 @@
                   </svg>
                 </div>
                 <div class="col_3">
-                  <p>Arnes Shuttle Bandung</p>
-                  <p>Arnes Shuttle Bekasi</p>
+                  <p><?php echo $x['tujuan']; ?></p>
+                  <p><?php echo $x['kota']; ?></p>
                 </div>
                 <div class="col_4"></div>
               </div>

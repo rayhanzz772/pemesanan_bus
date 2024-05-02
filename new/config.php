@@ -55,11 +55,12 @@ class Database {
 
 
 function tampil_data_bus() {
-    $data = mysqli_query($this->koneksi, "SELECT *
+    $data = mysqli_query($this->koneksi, "SELECT *, DATE_FORMAT(waktu_tiba, '%H:%i') AS waktu_tiba, DATE_FORMAT(waktu_keberangkatan, '%H:%i') AS waktu_keberangkatan
                                           FROM nama_bus nb
                                           INNER JOIN id_bus ib ON nb.id_foto = ib.id_foto
                                           INNER JOIN kota k ON nb.id_bus = k.id_bus
                                           INNER JOIN id_kota ik ON nb.id_kota = ik.id_kota
+                                          INNER JOIN tujuan t ON nb.id_tujuan = t.id_tujuan
                                           INNER JOIN gambar_bus gb ON nb.id_foto = gb.id_foto 
                                           INNER JOIN harga_bus h ON nb.id_bus = h.id_bus");
 
