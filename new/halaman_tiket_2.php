@@ -43,7 +43,6 @@ $result = mysqli_query($koneksi, "SELECT * FROM penumpang WHERE username = '$use
     <link rel="stylesheet" href="../assets/vendor/css/core.css" class="template-customizer-core-css" />
     <link rel="stylesheet" href="../assets/vendor/css/theme-default.css" class="template-customizer-theme-css" />
     <link rel="stylesheet" href="../assets/css/demo.css" />
-    <link rel="stylesheet" href="style.css">
     <!-- Vendors CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
@@ -114,21 +113,28 @@ $result = mysqli_query($koneksi, "SELECT * FROM penumpang WHERE username = '$use
                         <div class="card">
   <div class="card-body">
     <div class="text-section">
-    <h5>Selesaikan Pembayaran</h5>
-    <p><strong>17.18 PM</strong></p>
-    <p>Selesaikan dalam 58m 46s</p>
-    <p>
-      <hr>
-    </p>
-    <div class="row">
-      
-    </div>
-    <p class="card-text" style="font-style: fw-bold">
-      <strong>OKEBUS 113432553</strong>
-    </p>
-    <p class="card-text">
-      Rp. 79000
-    </p>
+      <div class="row_1" style="display:flex; align-items:start;">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" class="ionicon" viewBox="0 0 512 512"><path d="M256 64C150 64 64 150 64 256s86 192 192 192 192-86 192-192S362 64 256 64z" fill="none" stroke="currentColor" stroke-miterlimit="10" stroke-width="32"/><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32" d="M256 128v144h96"/></svg>       
+        <div style="margin-left:15px;">
+          <h5>Selesaikan Pembayaran</h5>
+            <p><strong>17.18 PM</strong></p>
+            <p>Selesaikan dalam 58m 46s</p>
+        </div>  
+      </div style="width">
+        <hr style="width:100%;">
+      <div>
+      <div style="display:flex; align-items:start;">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" class="ionicon" viewBox="0 0 512 512"><rect x="32" y="80" width="448" height="256" rx="16" ry="16" transform="rotate(180 256 208)" fill="none" stroke="currentColor" stroke-linejoin="round" stroke-width="32"/><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32" d="M64 384h384M96 432h320"/><circle cx="256" cy="208" r="80" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32"/><path d="M480 160a80 80 0 01-80-80M32 160a80 80 0 0080-80M480 256a80 80 0 00-80 80M32 256a80 80 0 0180 80" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32"/></svg>
+        <div  style="margin-left:15px;">
+          <p class="card-text" style="font-style: fw-bold">
+            <strong>OKEBUS 113432553</strong>
+          </p>
+          <p class="card-text">
+            Rp. 79000
+          </p>
+        </div>
+      </div>
+      </div>
     </div>
 
   </div>
