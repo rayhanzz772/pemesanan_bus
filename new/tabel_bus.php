@@ -124,7 +124,7 @@
                         <p>Pilih dari 49 bus</p>
                       </div>
                       <div class="row3">
-                        <div class="satu">
+                        <div class="satu" style="border:gray 0.1px solid;">
                           <div style="">
                             <p>Titik Berangkat</p>
                             <p style="font-weight:bold;">Pilih titik berangkat</p>
@@ -133,7 +133,7 @@
                             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" class="ionicon" viewBox="0 0 512 512"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="48" d="M112 184l144 144 144-144"/></svg>
                           </div>
                         </div>
-                        <div class="satu">
+                        <div class="satu"  style="border:gray 0.1px solid;">
                           <div>
                             <p>Titik tiba</p>
                             <p style="font-weight:bold;">Pilih titik tiba</p>

@@ -111,27 +111,62 @@ $result = mysqli_query($koneksi, "SELECT * FROM penumpang WHERE username = '$use
 
                         <!-- Tiket Bootstrap Table -->
                         <div class="card">
-  <div class="card-body">
+  <div class="card-body" style="background-color:white;border-radius: 8px;">
     <div class="text-section">
-      <div class="row_1" style="display:flex; align-items:start;">
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" class="ionicon" viewBox="0 0 512 512"><path d="M256 64C150 64 64 150 64 256s86 192 192 192 192-86 192-192S362 64 256 64z" fill="none" stroke="currentColor" stroke-miterlimit="10" stroke-width="32"/><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32" d="M256 128v144h96"/></svg>       
+      <div  style="display:flex; margin-left:15px;">
+        <div class="row_1" style="display:flex; align-items:start;justify-content: space-between">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" class="ionicon" viewBox="0 0 512 512"><path d="M256 64C150 64 64 150 64 256s86 192 192 192 192-86 192-192S362 64 256 64z" fill="none" stroke="currentColor" stroke-miterlimit="10" stroke-width="32"/><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32" d="M256 128v144h96"/></svg>       
+          <div style="margin-left:15px;">
+            <h5>Selesaikan Pembayaran</h5>
+              <p><strong>17.18 PM</strong></p>
+              <p>Selesaikan dalam 58m 46s</p>
+          </div>  
+        </div >
+
+      </div>
+      <hr style="width:100%;">
+      <div>
+        <div class="text-section" style="display:flex; align-items:start; justify-content: space-between">
+          <div  style="margin-left:15px;display: flex;">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" class="ionicon" viewBox="0 0 512 512"><rect x="32" y="80" width="448" height="256" rx="16" ry="16" transform="rotate(180 256 208)" fill="none" stroke="currentColor" stroke-linejoin="round" stroke-width="32"/><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32" d="M64 384h384M96 432h320"/><circle cx="256" cy="208" r="80" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32"/><path d="M480 160a80 80 0 01-80-80M32 160a80 80 0 0080-80M480 256a80 80 0 00-80 80M32 256a80 80 0 0180 80" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32"/></svg>
+            <div style="display:flex; flex-direction: column; margin-left:20px;">
+              <p class="card-text" style="font-style: fw-bold">
+                <strong>OKEBUS 113432553</strong>
+              </p>
+              <p class="card-text">
+                Rp. 79000
+              </p>
+              
+            </div>
+        </div>
+        <div style="margin-right: 20px; ">
+           <p style="display:flex; justify-content:center; align-items:center;color:#1ba0e1">Salin</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  </div>
+</div>  
+<h4 style="margin-top:50px; font-weight:bold">Cara Transfer</h4>
+  <div class="card-body" style="background-color:white; border-radius: 8px;">
+    <div class="text-section">
+      <div class="row_1" style="display:flex; align-items:start; justify-content:space-between">
         <div style="margin-left:15px;">
-          <h5>Selesaikan Pembayaran</h5>
-            <p><strong>17.18 PM</strong></p>
-            <p>Selesaikan dalam 58m 46s</p>
+          <h5>BRImo</h5>
         </div>  
-      </div style="width">
-        <hr style="width:100%;">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="white" width="20" height="20" class="ionicon" viewBox="0 0 512 512"><path stroke="#1ba0e1" stroke-linecap="round" stroke-linejoin="round" stroke-width="48" d="M112 328l144-144 144 144"/></svg>
+      </div>
       <div>
       <div style="display:flex; align-items:start;">
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" class="ionicon" viewBox="0 0 512 512"><rect x="32" y="80" width="448" height="256" rx="16" ry="16" transform="rotate(180 256 208)" fill="none" stroke="currentColor" stroke-linejoin="round" stroke-width="32"/><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32" d="M64 384h384M96 432h320"/><circle cx="256" cy="208" r="80" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32"/><path d="M480 160a80 80 0 01-80-80M32 160a80 80 0 0080-80M480 256a80 80 0 00-80 80M32 256a80 80 0 0180 80" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32"/></svg>
         <div  style="margin-left:15px;">
-          <p class="card-text" style="font-style: fw-bold">
-            <strong>OKEBUS 113432553</strong>
+          <p class="card-text" style="font-size:20px;">
+            <p style="font-size:15px;">1. Buka aplikasi BRImo, lalu masuk dengan akunmu.</p>
+            <p style="font-size:15px;">2. Pilih <span style="font-weight:bold;"> pembayaran > BRIVA.</span></p>
+            <p style="font-size:15px;">3. Masukkan nomor virtual account yang tertera <span style="font-weight:bold; color:#1ba0e1;">[113432553]</span>, lalu klik OK. </p>
+            <p style="font-size:15px;">4. Di rincian pembayaran, pastikan detail pembayaran sudah sesuai</p>
           </p>
-          <p class="card-text">
-            Rp. 79000
-          </p>
+     
         </div>
       </div>
       </div>
